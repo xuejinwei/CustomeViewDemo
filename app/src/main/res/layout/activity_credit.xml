@@ -5,11 +5,15 @@
               android:gravity="center"
               android:orientation="vertical">
 
-    <com.xuejinwei.customeviewdemo.Clorks.SmartisanTime
+    <com.xuejinwei.customeviewdemo.Credit.NewCreditSesameView
+        android:id="@+id/sesame_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <com.xuejinwei.customeviewdemo.Clorks.AnalogClock
+    <Button
+        android:id="@+id/btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="开始"/>
+
 </LinearLayout>

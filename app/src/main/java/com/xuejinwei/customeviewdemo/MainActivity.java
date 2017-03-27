@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.xuejinwei.customeviewdemo.Activity.ClorkActivity;
+import com.xuejinwei.customeviewdemo.Activity.CreditActivity;
 import com.xuejinwei.customeviewdemo.Activity.NumberProgressBarActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mBtnNumberProgressbar, mBtnClork;
+    private Button mBtnNumberProgressbar, mBtnClork, mBtnCredit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +19,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mBtnNumberProgressbar = (Button) findViewById(R.id.btn_number_progressbar);
         mBtnClork = (Button) findViewById(R.id.btn_clork);
+        mBtnCredit = (Button) findViewById(R.id.btn_credit);
 
         mBtnNumberProgressbar.setOnClickListener(this);
         mBtnClork.setOnClickListener(this);
+        mBtnCredit.setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_clork:
                 startActivity(new Intent(this, ClorkActivity.class));
+                break;
+            case R.id.btn_credit:
+                startActivity(new Intent(this, CreditActivity.class));
                 break;
             default:
                 break;

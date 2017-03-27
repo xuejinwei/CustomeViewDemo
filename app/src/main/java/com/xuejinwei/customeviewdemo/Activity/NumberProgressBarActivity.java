@@ -69,7 +69,7 @@ public class NumberProgressBarActivity extends AppCompatActivity implements OnPr
     public void onProgressChange(int current, int max) {
         if (current == max) {
             Toast.makeText(getApplicationContext(), "完成！", Toast.LENGTH_SHORT).show();
-            bnp.setProgress(0);
+            timer.cancel();
         }
     }
 }

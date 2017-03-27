@@ -7,14 +7,13 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.text.format.Time;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RemoteViews;
 
 import com.xuejinwei.customeviewdemo.R;
 
-import java.util.TimeZone;
+import java.util.Calendar;
 
 
 /**
@@ -25,7 +24,7 @@ import java.util.TimeZone;
 @RemoteViews.RemoteView
 @Deprecated
 public class AnalogClock extends View {
-    private Time mCalendar;
+    private Calendar mCalendar1;
 
     private Drawable mHourHand;
     private Drawable mMinuteHand;
@@ -68,7 +67,7 @@ public class AnalogClock extends View {
             mMinuteHand = context.getResources().getDrawable(R.drawable.clock_hand_minute);
         }
 
-        mCalendar = new Time();
+        mCalendar1 = Calendar.getInstance();
 
         mDialWidth = mDial.getIntrinsicWidth();
         mDialHeight = mDial.getIntrinsicHeight();
@@ -92,8 +91,7 @@ public class AnalogClock extends View {
                     filter);
         }
 
-
-        mCalendar = new Time();
+        mCalendar1 = Calendar.getInstance();
 
 
         onTimeChanged();
@@ -202,11 +200,11 @@ public class AnalogClock extends View {
     }
 
     private void onTimeChanged() {
-        mCalendar.setToNow();
+        mCalendar1 = Calendar.getInstance();
 
-        int hour = mCalendar.hour;
-        int minute = mCalendar.minute;
-        int second = mCalendar.second;
+        int hour = mCalendar1.get(Calendar.HOUR);
+        int minute = mCalendar1.get(Calendar.MINUTE);
+        int second = mCalendar1.get(Calendar.SECOND);
 
         mMinutes = minute + second / 60.0f;
         mHour = hour + mMinutes / 60.0f;
@@ -219,7 +217,7 @@ public class AnalogClock extends View {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)) {
                 String tz = intent.getStringExtra("time-zone");
-                mCalendar = new Time(TimeZone.getTimeZone(tz).getID());
+                mCalendar1 = Calendar.getInstance();
             }
 
             onTimeChanged();

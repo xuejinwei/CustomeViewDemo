@@ -18,6 +18,7 @@
 
         <activity android:name=".Activity.NumberProgressBarActivity"/>
         <activity android:name=".Activity.ClorkActivity"/>
+        <activity android:name=".Activity.CreditActivity"/>
     </application>
 
 </manifest>
