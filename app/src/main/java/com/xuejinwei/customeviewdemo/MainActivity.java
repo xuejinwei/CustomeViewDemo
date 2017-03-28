@@ -9,9 +9,10 @@ import android.widget.Button;
 import com.xuejinwei.customeviewdemo.Activity.ClorkActivity;
 import com.xuejinwei.customeviewdemo.Activity.CreditActivity;
 import com.xuejinwei.customeviewdemo.Activity.NumberProgressBarActivity;
+import com.xuejinwei.customeviewdemo.Activity.PieActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mBtnNumberProgressbar, mBtnClork, mBtnCredit;
+    private Button mBtnNumberProgressbar, mBtnClork, mBtnCredit, mBtnPie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +21,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnNumberProgressbar = (Button) findViewById(R.id.btn_number_progressbar);
         mBtnClork = (Button) findViewById(R.id.btn_clork);
         mBtnCredit = (Button) findViewById(R.id.btn_credit);
+        mBtnPie = (Button) findViewById(R.id.btn_pie);
 
         mBtnNumberProgressbar.setOnClickListener(this);
         mBtnClork.setOnClickListener(this);
         mBtnCredit.setOnClickListener(this);
+        mBtnPie.setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_credit:
                 startActivity(new Intent(this, CreditActivity.class));
+                break;
+            case R.id.btn_pie:
+                startActivity(new Intent(this, PieActivity.class));
                 break;
             default:
                 break;
