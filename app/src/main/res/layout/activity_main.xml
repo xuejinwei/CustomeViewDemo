@@ -37,4 +37,10 @@
         android:layout_height="wrap_content"
         android:text="统计图"/>
 
+    <Button
+        android:id="@+id/btn_bezier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="贝塞尔曲线"/>
+
 </LinearLayout>

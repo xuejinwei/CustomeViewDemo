@@ -10,9 +10,10 @@ import com.xuejinwei.customeviewdemo.Activity.ClorkActivity;
 import com.xuejinwei.customeviewdemo.Activity.CreditActivity;
 import com.xuejinwei.customeviewdemo.Activity.NumberProgressBarActivity;
 import com.xuejinwei.customeviewdemo.Activity.PieActivity;
+import com.xuejinwei.customeviewdemo.Path.PathActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mBtnNumberProgressbar, mBtnClork, mBtnCredit, mBtnPie;
+    private Button mBtnNumberProgressbar, mBtnClork, mBtnCredit, mBtnPie, mBtnBezier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +23,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnClork = (Button) findViewById(R.id.btn_clork);
         mBtnCredit = (Button) findViewById(R.id.btn_credit);
         mBtnPie = (Button) findViewById(R.id.btn_pie);
+        mBtnBezier = (Button) findViewById(R.id.btn_bezier);
 
         mBtnNumberProgressbar.setOnClickListener(this);
         mBtnClork.setOnClickListener(this);
         mBtnCredit.setOnClickListener(this);
         mBtnPie.setOnClickListener(this);
+        mBtnBezier.setOnClickListener(this);
     }
 
     @Override
@@ -43,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_pie:
                 startActivity(new Intent(this, PieActivity.class));
+                break;
+            case R.id.btn_bezier:
+                startActivity(new Intent(this, PathActivity.class));
                 break;
             default:
                 break;

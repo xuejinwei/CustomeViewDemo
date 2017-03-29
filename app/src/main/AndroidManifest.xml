@@ -21,6 +21,7 @@
         <activity android:name=".Activity.CreditActivity"/>
         <activity android:name=".Activity.DemoActivity"/>
         <activity android:name=".Activity.PieActivity"/>
+        <activity android:name=".Path.PathActivity"/>
     </application>
 
 </manifest>
