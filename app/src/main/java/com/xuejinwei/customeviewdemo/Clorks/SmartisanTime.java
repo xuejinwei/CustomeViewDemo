@@ -14,6 +14,7 @@ import java.util.Calendar;
 /**
  * Created by xuejinwei on 2017/3/27.
  * Email:xuejinwei@outlook.com
+ * 默认宽高为200dp,如果用户设置宽高不一，以小的为钟表直径，居中显示
  */
 
 public class SmartisanTime extends View {
@@ -48,7 +49,8 @@ public class SmartisanTime extends View {
     //圆环的宽度
     private int ringPaintWidth = 10;
     //表盘的大小
-    private int   mSize;
+    private int mSize;
+    private int mWidth, mHeight;
     //表盘背景画笔
     private Paint outCirclePaint;
     //最外层圆环
@@ -145,32 +147,10 @@ public class SmartisanTime extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        int width = startMeasure(widthMeasureSpec);
-//        int height = startMeasure(heightMeasureSpec);
-        mSize = dp2px(MIN_SIZE);
-        setMeasuredDimension(mSize, mSize);
-    }
-
-    /**
-     * 根据不同的模式,设置控件的大小;
-     *
-     * @param whSpec
-     * @return 最后控件的大小
-     */
-    private int startMeasure(int whSpec) {
-        int result;
-        int size = MeasureSpec.getSize(whSpec);
-        int mode = MeasureSpec.getMode(whSpec);
-        if (mode == MeasureSpec.EXACTLY || mode == MeasureSpec.AT_MOST) {
-            if (size < dp2px(MIN_SIZE)) {
-                result = dp2px(MIN_SIZE);
-            } else {
-                result = size;
-            }
-        } else {
-            result = dp2px(MIN_SIZE);
-        }
-        return result;
+        mWidth = measureDimension(dp2px(200), widthMeasureSpec);
+        mHeight = measureDimension(dp2px(200), heightMeasureSpec);
+        mSize = Math.min(mWidth, mHeight);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
@@ -179,7 +159,7 @@ public class SmartisanTime extends View {
         calendar = Calendar.getInstance();
         getTime();
         //将画布移到中央
-        canvas.translate(mSize / 2, mSize / 2);
+        canvas.translate(mWidth / 2, mHeight / 2);
 
         drawOutCircle(canvas);
 
@@ -322,6 +302,23 @@ public class SmartisanTime extends View {
         canvas.rotate(second * DEGREE);
         canvas.drawLine(0, length / 5, 0, -length * 4 / 5, secondPaint);
         canvas.restore();
+    }
+
+    public int measureDimension(int defaultSize, int measureSpec) {
+        int result;
+
+        int specMode = MeasureSpec.getMode(measureSpec);
+        int specSize = MeasureSpec.getSize(measureSpec);
+
+        if (specMode == MeasureSpec.EXACTLY) {// macth_parent,100dp
+            result = specSize;
+        } else {
+            result = defaultSize;   //UNSPECIFIED
+            if (specMode == MeasureSpec.AT_MOST) {// wrap_content
+                result = Math.min(result, specSize);
+            }
+        }
+        return result;
     }
 
     /**
