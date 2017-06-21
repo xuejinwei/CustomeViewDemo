@@ -22,6 +22,7 @@
         <activity android:name=".Activity.DemoActivity"/>
         <activity android:name=".Activity.PieActivity"/>
         <activity android:name=".Path.PathActivity"/>
+        <activity android:name=".Activity.ViewGroupActivity"/>
     </application>
 
 </manifest>

@@ -43,4 +43,10 @@
         android:layout_height="wrap_content"
         android:text="贝塞尔曲线"/>
 
+    <Button
+        android:id="@+id/btn_view_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义viewgroup"/>
+
 </LinearLayout>
