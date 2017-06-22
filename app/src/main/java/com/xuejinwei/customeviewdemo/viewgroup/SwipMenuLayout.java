@@ -100,7 +100,7 @@ public class SwipMenuLayout extends ViewGroup {
                 left = left + childView.getMeasuredWidth();
             }
             // 初始化左右边界值
-            leftBorder = getChildAt(0).getRight();
+            leftBorder = getChildAt(0).getLeft();
             rightBorder = getChildAt(getChildCount() - 1).getRight();
         }
     }
